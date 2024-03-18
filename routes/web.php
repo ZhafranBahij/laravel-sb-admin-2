@@ -1,7 +1,14 @@
 <?php
 
+// use App\Livewire\Admin\Home;
+
+use App\Http\Controllers\ProfileController;
+use App\Livewire\Admin\About;
+use App\Livewire\Admin\Home;
+use App\Livewire\Cms\ProfileEdit;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +27,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')->group(function(){
+    Route::get('home', Home::class)->name('home');
+    Route::get('about', About::class)->name('about');
+    // Route::get('profile', ProfileEdit::class)->name('profile.edit');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+});
 
-Route::get('/profile', 'ProfileController@index')->name('profile');
-Route::put('/profile', 'ProfileController@update')->name('profile.update');
 
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
+// Route::get('/about', function () {
+//     return view('about');
+// })->name('about');
