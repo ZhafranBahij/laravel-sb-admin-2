@@ -44,6 +44,7 @@
                         <thead>
                           <tr>
                             <th scope="col">Id</th>
+                            <th scope="col">Action</th>
                             <th scope="col">First</th>
                             <th scope="col">Last</th>
                             <th scope="col">Email</th>
@@ -55,6 +56,15 @@
                             @foreach ($users as $key => $item)
                                 <tr>
                                     <th scope="row">{{ $item->id }}</th>
+                                    <td>
+                                        <a href="{{ route('user.edit', $item->id) }}" class="btn btn-warning btn-sm">
+                                            Edit
+                                        </a>
+                                        <button type="button"
+                                        wire:click="delete({{ $item->id }})"
+                                        wire:confirm="Are you sure you want to delete this post?"
+                                        class="btn btn-danger btn-sm">Delete</button>
+                                    </td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->last_name }}</td>
                                     <td>{{ $item->email }}</td>

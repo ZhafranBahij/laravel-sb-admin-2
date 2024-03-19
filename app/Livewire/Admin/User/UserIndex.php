@@ -19,6 +19,14 @@ class UserIndex extends Component
         $this->resetPage();
     }
 
+    public function delete($id){
+        User::find($id)->delete();
+
+        session()->flash('success', 'Data successfully deleted.');
+
+        return $this->redirect('/user', true);
+    }
+
     #[Layout('layouts.admin-livewire')]
     public function render()
     {
