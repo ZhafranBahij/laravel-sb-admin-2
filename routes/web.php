@@ -5,6 +5,9 @@
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Admin\About;
 use App\Livewire\Admin\Home;
+use App\Livewire\Admin\User\UserCreate;
+use App\Livewire\Admin\User\UserEdit;
+use App\Livewire\Admin\User\UserIndex;
 use App\Livewire\Cms\ProfileEdit;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +36,13 @@ Route::middleware('auth')->group(function(){
     // Route::get('profile', ProfileEdit::class)->name('profile.edit');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+    Route::prefix('user')->group(function(){
+        Route::get('', UserIndex::class)->name('user.index');
+        Route::get('/create', UserCreate::class)->name('user.create');
+        Route::get('/{user}/edit', UserEdit::class)->name('user.edit');
+    });
+
 });
 
 

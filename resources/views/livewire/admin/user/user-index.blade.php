@@ -1,0 +1,65 @@
+<div>
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">{{ __('Users') }}</h1>
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-10">
+
+            <div class="card shadow mb-4">
+
+                <div class="card-body">
+
+                    <div class="pl-lg-4 mb-4">
+                        <div class="row">
+                            <div class="col-6">
+                                <a href="{{ route('user.create') }}" class="btn btn-primary" wire:navigate.hover>Create +</a>
+                            </div>
+                            <div class="col-6">
+                                <!-- Topbar Search -->
+                                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small" wire:model.live="search" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-hover table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Created At</th>
+                            <th scope="col">Updated At</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($users as $key => $item)
+                                <tr>
+                                    <th scope="row">{{ $item->id }}</th>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->last_name }}</td>
+                                    <td>{{ $item->email }}</td>
+                                    <td>{{ $item->created_at }}</td>
+                                    <td>{{ $item->updated_at }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+                {{ $users->links() }}
+
+        </div>
+
+    </div>
+</div>
