@@ -10,7 +10,7 @@ use Livewire\Component;
 class ProfileEdit extends Component
 {
 
-    #[Validate()]
+    #[Validate]
     public $user, $name, $last_name, $email;
 
     public function mount()
