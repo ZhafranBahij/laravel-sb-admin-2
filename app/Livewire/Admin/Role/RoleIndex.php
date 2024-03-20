@@ -34,6 +34,7 @@ class RoleIndex extends Component
         ->whereAny([
             'name',
         ], 'LIKE', '%'.$this->search.'%')
+        ->with(['permissions'])
         ->simplePaginate(10);
 
         return view('livewire.admin.role.role-index', ['roles' => $roles]);

@@ -47,6 +47,7 @@
                             <th scope="col">Action</th>
                             <th scope="col">First</th>
                             <th scope="col">Last</th>
+                            <th scope="col">Roles</th>
                             <th scope="col">Email</th>
                             <th scope="col">Created At</th>
                             <th scope="col">Updated At</th>
@@ -67,6 +68,15 @@
                                     </td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->last_name }}</td>
+                                    <td>
+                                        <ul>
+                                            @foreach ($item->roles as $role)
+                                            <li>
+                                                {{ $role->name }}
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->created_at }}</td>
                                     <td>{{ $item->updated_at }}</td>

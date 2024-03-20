@@ -36,6 +36,7 @@ class UserIndex extends Component
                         'last_name',
                         'email',
                     ], 'LIKE', '%'.$this->search.'%')
+                    ->with(['roles'])
                     ->simplePaginate(10);
 
         return view('livewire.admin.user.user-index', ['users' => $users]);

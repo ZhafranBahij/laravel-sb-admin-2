@@ -46,6 +46,7 @@
                             <th scope="col">Id</th>
                             <th scope="col">Action</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Permission</th>
                             <th scope="col">Created At</th>
                             <th scope="col">Updated At</th>
                           </tr>
@@ -64,6 +65,15 @@
                                         class="btn btn-danger btn-sm">Delete</button>
                                     </td>
                                     <td>{{ $item->name }}</td>
+                                    <td>
+                                        <ul>
+                                            @foreach ($item->permissions as $permission)
+                                            <li>
+                                                {{ $permission->name }}
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
                                     <td>{{ $item->created_at }}</td>
                                     <td>{{ $item->updated_at }}</td>
                                 </tr>

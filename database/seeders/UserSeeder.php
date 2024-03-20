@@ -14,9 +14,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $true_admin = Role::create(['name' => 'true admin']);
-        $admin = Role::create(['name' => 'admin']);
-        $user = Role::create(['name' => 'user']);
 
         $kirakira = User::create([
             'name' => 'kirakira4141',

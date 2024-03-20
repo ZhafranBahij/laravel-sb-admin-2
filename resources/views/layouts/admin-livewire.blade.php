@@ -74,38 +74,47 @@
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            {{ __('Users') }}
-        </div>
+        @can('view users')
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                {{ __('Users') }}
+            </div>
+        @endcan
 
         <!-- Nav Item - User -->
-        <li class="nav-item {{ Nav::isRoute('user.*') }}">
-            <a class="nav-link" href="{{ route('user.index') }}" wire:navigate.hover>
-                <i class="fas fa-fw fa-hands-helping"></i>
-                <span>{{ __('User') }}</span>
-            </a>
-        </li>
+        @can('view users')
+            <li class="nav-item {{ Nav::isRoute('user.*') }}">
+                <a class="nav-link" href="{{ route('user.index') }}" wire:navigate.hover>
+                    <i class="fas fa-fw fa-hands-helping"></i>
+                    <span>{{ __('User') }}</span>
+                </a>
+            </li>
+        @endcan
 
         <!-- Nav Item - Role -->
-        <li class="nav-item {{ Nav::isRoute('role.*') }}">
-            <a class="nav-link" href="{{ route('role.index') }}" wire:navigate.hover>
-                <i class="fas fa-fw fa-hands-helping"></i>
-                <span>{{ __('Role') }}</span>
-            </a>
-        </li>
+        @can('view roles')
+            <li class="nav-item {{ Nav::isRoute('role.*') }}">
+                <a class="nav-link" href="{{ route('role.index') }}" wire:navigate.hover>
+                    <i class="fas fa-fw fa-hands-helping"></i>
+                    <span>{{ __('Role') }}</span>
+                </a>
+            </li>
+        @endcan
 
         <!-- Nav Item - Permission -->
-        <li class="nav-item {{ Nav::isRoute('permission.*') }}">
-            <a class="nav-link" href="{{ route('permission.index') }}" wire:navigate.hover>
-                <i class="fas fa-fw fa-hands-helping"></i>
-                <span>{{ __('Permission') }}</span>
-            </a>
-        </li>
+        @can('view permissions')
+            <li class="nav-item {{ Nav::isRoute('permission.*') }}">
+                <a class="nav-link" href="{{ route('permission.index') }}" wire:navigate.hover>
+                    <i class="fas fa-fw fa-hands-helping"></i>
+                    <span>{{ __('Permission') }}</span>
+                </a>
+            </li>
+        @endcan
 
-
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
+        @can('view users')
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+        @endcan
 
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
