@@ -5,6 +5,9 @@
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Admin\About;
 use App\Livewire\Admin\Home;
+use App\Livewire\Admin\Role\RoleCreate;
+use App\Livewire\Admin\Role\RoleIndex;
+use App\Livewire\Admin\Role\RoleEdit;
 use App\Livewire\Admin\User\UserCreate;
 use App\Livewire\Admin\User\UserEdit;
 use App\Livewire\Admin\User\UserIndex;
@@ -41,6 +44,12 @@ Route::middleware('auth')->group(function(){
         Route::get('', UserIndex::class)->name('user.index');
         Route::get('/create', UserCreate::class)->name('user.create');
         Route::get('/{user}/edit', UserEdit::class)->name('user.edit');
+    });
+
+    Route::prefix('role')->group(function(){
+        Route::get('', RoleIndex::class)->name('role.index');
+        Route::get('/create', RoleCreate::class)->name('role.create');
+        Route::get('/{role}/edit', RoleEdit::class)->name('role.edit');
     });
 
 });

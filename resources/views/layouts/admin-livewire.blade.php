@@ -87,6 +87,14 @@
             </a>
         </li>
 
+        <!-- Nav Item - Role -->
+        <li class="nav-item {{ Nav::isRoute('role.*') }}">
+            <a class="nav-link" href="{{ route('role.index') }}" wire:navigate.hover>
+                <i class="fas fa-fw fa-hands-helping"></i>
+                <span>{{ __('Role') }}</span>
+            </a>
+        </li>
+
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 

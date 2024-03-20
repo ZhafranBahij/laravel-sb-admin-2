@@ -1,0 +1,80 @@
+<div>
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">{{ __('Roles') }}</h1>
+
+    @if (session('success'))
+        <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-10">
+
+            <div class="card shadow mb-4">
+
+                <div class="card-body">
+
+                    <div class="pl-lg-4 mb-4">
+                        <div class="row">
+                            <div class="col-6">
+                                <a href="{{ route('role.create') }}" class="btn btn-primary" wire:navigate.hover>Create +</a>
+                            </div>
+                            <div class="col-6">
+                                <!-- Topbar Search -->
+                                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small" wire:model.live="search" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-hover table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Action</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Created At</th>
+                            <th scope="col">Updated At</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($roles as $key => $item)
+                                <tr>
+                                    <th scope="row">{{ $item->id }}</th>
+                                    <td>
+                                        <a href="{{ route('role.edit', $item->id) }}" class="btn btn-warning btn-sm">
+                                            Edit
+                                        </a>
+                                        <button type="button"
+                                        wire:click="delete({{ $item->id }})"
+                                        wire:confirm="Are you sure you want to delete this post?"
+                                        class="btn btn-danger btn-sm">Delete</button>
+                                    </td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->created_at }}</td>
+                                    <td>{{ $item->updated_at }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+                {{ $roles->links() }}
+
+        </div>
+
+    </div>
+</div>
