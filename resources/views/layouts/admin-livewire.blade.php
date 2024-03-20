@@ -95,6 +95,15 @@
             </a>
         </li>
 
+        <!-- Nav Item - Permission -->
+        <li class="nav-item {{ Nav::isRoute('permission.*') }}">
+            <a class="nav-link" href="{{ route('permission.index') }}" wire:navigate.hover>
+                <i class="fas fa-fw fa-hands-helping"></i>
+                <span>{{ __('Permission') }}</span>
+            </a>
+        </li>
+
+
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
