@@ -39,9 +39,9 @@ Auth::routes();
 Route::middleware('auth')->group(function(){
     Route::get('home', Home::class)->name('home');
     Route::get('about', About::class)->name('about');
-    // Route::get('profile', ProfileEdit::class)->name('profile.edit');
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('profile', ProfileEdit::class)->name('profile.edit');
+    // Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    // Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::prefix('user')->group(function(){
         Route::get('', UserIndex::class)->name('user.index');

@@ -57,7 +57,11 @@
 
         <!-- Nav Item - Profile -->
         <li class="nav-item {{ Nav::isRoute('profile') }}">
-            <a class="nav-link" href="{{ route('profile') }}" wire:navigate>
+            {{-- <a class="nav-link" href="{{ route('profile') }}" wire:navigate>
+                <i class="fas fa-fw fa-user"></i>
+                <span>{{ __('Profile') }}</span>
+            </a> --}}
+            <a class="nav-link" href="{{ route('profile.edit') }}" wire:navigate>
                 <i class="fas fa-fw fa-user"></i>
                 <span>{{ __('Profile') }}</span>
             </a>
@@ -288,9 +292,13 @@
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="{{ route('profile') }}" wire:navigate>
+                            {{-- <a class="dropdown-item" href="{{ route('profile') }}" wire:navigate>
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 {{ __('Profile') }}
+                            </a> --}}
+                            <a class="nav-link" href="{{ route('profile.edit') }}" wire:navigate>
+                                <i class="fas fa-fw fa-user"></i>
+                                <span>{{ __('Profile') }}</span>
                             </a>
                             <a class="dropdown-item" href="javascript:void(0)">
                                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
