@@ -5,12 +5,13 @@ namespace App\Livewire\Admin\Role;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RoleEdit extends Component
 {
 
-    public $id;
+    public $id, $permissions_in_rule = [], $permissions;
 
     #[Validate]
     public $name;
@@ -33,9 +34,11 @@ class RoleEdit extends Component
 
         $this->validate();
 
-        Role::find($this->id)->update(
-            $this->all()
+        $role = Role::find($this->id);
+        $role->update(
+            $this->only('name')
         );
+        $role->syncPermissions($this->permissions_in_rule);
 
         session()->flash('success', 'Data successfully updated.');
 
@@ -45,6 +48,9 @@ class RoleEdit extends Component
     #[Layout('layouts.admin-livewire')]
     public function render()
     {
+        $this->permissions = Permission::all()->pluck('name');
+        $role = Role::find($this->id);
+        $this->permissions_in_rule = $role->permissions->pluck('name');
         return view('livewire.admin.role.role-edit');
     }
 }

@@ -6,9 +6,14 @@ use App\Models\User;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class UserCreate extends Component
 {
+
+    public $roles, $user_has_roles = [];
+
     #[Validate]
     public $name, $last_name, $email, $password;
 
@@ -27,10 +32,11 @@ class UserCreate extends Component
 
         $this->validate();
 
-        User::create(
-            $this->all()
+        $user = User::create(
+            $this->except(['user_has_roles'])
         );
 
+        $user->assignRole($this->user_has_roles);
         session()->flash('success', 'Data successfully created.');
 
         return $this->redirect('/user', true);
@@ -39,6 +45,8 @@ class UserCreate extends Component
     #[Layout('layouts.admin-livewire')]
     public function render()
     {
+        $this->roles = Role::all()->pluck('name');
+
         return view('livewire.admin.user.user-create');
     }
 }

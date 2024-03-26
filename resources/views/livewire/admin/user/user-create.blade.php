@@ -47,6 +47,18 @@
                             @enderror
                             </div>
                         </div>
+                        <div class="mb-3 pl-3 row">
+                            @foreach ($roles as $key => $item)
+                                <div class="form-check col-3">
+                                    <input class="form-check-input" type="checkbox" value="{{ $item }}" id="{{ $key }}" wire:model="user_has_roles">
+                                    <label class="form-check-label" for="{{ $key }}">
+                                        {{ $item }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="mb-3 col-12">
+                        </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                       </form>
 

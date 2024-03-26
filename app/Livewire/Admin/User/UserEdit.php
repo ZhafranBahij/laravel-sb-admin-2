@@ -6,11 +6,12 @@ use App\Models\User;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Spatie\Permission\Models\Role;
 
 class UserEdit extends Component
 {
 
-    public $id;
+    public $id, $roles, $user_has_roles = [];
     #[Validate]
     public $name, $last_name, $email, $password;
 
@@ -19,6 +20,7 @@ class UserEdit extends Component
         $this->name = $user->name;
         $this->last_name = $user->last_name;
         $this->email = $user->email;
+        $this->user_has_roles = $user->getRoleNames();
     }
 
     public function rules()
@@ -35,9 +37,13 @@ class UserEdit extends Component
 
         $this->validate();
 
-        User::find($this->id)->update(
-            $this->all()
+        $user = User::find($this->id);
+
+        $user->update(
+            $this->except(['user_has_roles'])
         );
+
+        $user->syncRoles($this->user_has_roles);
 
         session()->flash('success', 'Data successfully updated.');
 
@@ -47,6 +53,8 @@ class UserEdit extends Component
     #[Layout('layouts.admin-livewire')]
     public function render()
     {
+        $this->roles = Role::all()->pluck('name');
+
         return view('livewire.admin.user.user-edit');
     }
 }

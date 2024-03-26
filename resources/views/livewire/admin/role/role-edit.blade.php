@@ -22,6 +22,18 @@
                         </div>
                         <div class="mb-3 col-6">
                         </div>
+                        <div class="mb-3 pl-3 row">
+                            @foreach ($permissions as $key => $item)
+                                <div class="form-check col-3">
+                                    <input class="form-check-input" type="checkbox" value="{{ $item }}" id="{{ $key }}" wire:model="permissions_in_rule">
+                                    <label class="form-check-label" for="{{ $key }}">
+                                        {{ $item }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="mb-3 col-12">
+                        </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
 

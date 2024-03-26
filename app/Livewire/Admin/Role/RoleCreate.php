@@ -5,10 +5,15 @@ namespace App\Livewire\Admin\Role;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RoleCreate extends Component
 {
+
+    public $permissions;
+    public $permissions_in_rule = [];
+
     #[Validate]
     public $name;
 
@@ -24,9 +29,11 @@ class RoleCreate extends Component
 
         $this->validate();
 
-        Role::create(
-            $this->all()
+        $role = Role::create(
+            $this->only('name')
         );
+
+        $role->syncPermissions($this->permissions_in_rule);
 
         session()->flash('success', 'Data successfully created.');
 
@@ -36,6 +43,7 @@ class RoleCreate extends Component
     #[Layout('layouts.admin-livewire')]
     public function render()
     {
+        $this->permissions = Permission::all()->pluck('name');
         return view('livewire.admin.role.role-create');
     }
 }

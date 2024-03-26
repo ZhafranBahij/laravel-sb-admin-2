@@ -1,6 +1,6 @@
 <div>
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">{{ __('User Create') }}</h1>
+    <h1 class="h3 mb-4 text-gray-800">{{ __('User Edit') }}</h1>
 
     <div class="row justify-content-center">
 
@@ -37,6 +37,16 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                             </div>
+                        </div>
+                        <div class="mb-3 pl-3 row col-12">
+                            @foreach ($roles as $key => $item)
+                                <div class="form-check col-3">
+                                    <input class="form-check-input" type="checkbox" value="{{ $item }}" id="{{ $key }}" wire:model="user_has_roles">
+                                    <label class="form-check-label" for="{{ $key }}">
+                                        {{ $item }}
+                                    </label>
+                                </div>
+                            @endforeach
                         </div>
                         <div class="mb-3 col-6">
                         </div>
