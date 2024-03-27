@@ -59,12 +59,14 @@
                                     <th scope="row">{{ $item->id }}</th>
                                     <td>
                                         <a href="{{ route('user.edit', $item->id) }}" class="btn btn-warning btn-sm">
-                                            Edit
+                                            <i class="fa-solid fa-pencil"></i> Edit
                                         </a>
                                         <button type="button"
                                         wire:click="delete({{ $item->id }})"
                                         wire:confirm="Are you sure you want to delete this post?"
-                                        class="btn btn-danger btn-sm">Delete</button>
+                                        class="btn btn-danger btn-sm">
+                                            <i class="fa-solid fa-trash"></i> Delete
+                                        </button>
                                     </td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->last_name }}</td>

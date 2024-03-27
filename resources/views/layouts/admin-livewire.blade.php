@@ -89,7 +89,7 @@
         @can('view users')
             <li class="nav-item {{ Nav::isRoute('user.*') }}">
                 <a class="nav-link" href="{{ route('user.index') }}" wire:navigate.hover>
-                    <i class="fas fa-fw fa-hands-helping"></i>
+                    <i class="fas fa-fw fa-users"></i>
                     <span>{{ __('User') }}</span>
                 </a>
             </li>
@@ -99,7 +99,7 @@
         @can('view roles')
             <li class="nav-item {{ Nav::isRoute('role.*') }}">
                 <a class="nav-link" href="{{ route('role.index') }}" wire:navigate.hover>
-                    <i class="fas fa-fw fa-hands-helping"></i>
+                    <i class="fas fa-fw fa-user-tag"></i>
                     <span>{{ __('Role') }}</span>
                 </a>
             </li>
@@ -109,7 +109,7 @@
         @can('view permissions')
             <li class="nav-item {{ Nav::isRoute('permission.*') }}">
                 <a class="nav-link" href="{{ route('permission.index') }}" wire:navigate.hover>
-                    <i class="fas fa-fw fa-hands-helping"></i>
+                    <i class="fas fa-fw fa-user-shield"></i>
                     <span>{{ __('Permission') }}</span>
                 </a>
             </li>
