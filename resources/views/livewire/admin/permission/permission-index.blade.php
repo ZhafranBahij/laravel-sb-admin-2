@@ -55,7 +55,7 @@
                                 <tr>
                                     <th scope="row">{{ $item->id }}</th>
                                     <td>
-                                        <a href="{{ route('permission.edit', $item->id) }}" class="btn btn-warning btn-sm">
+                                        <a href="{{ route('permission.edit', $item->id) }}" class="btn btn-warning btn-sm"  wire:navigate.hover>
                                             <i class="fa-solid fa-pencil"></i> Edit
                                         </a>
                                         <button type="button"

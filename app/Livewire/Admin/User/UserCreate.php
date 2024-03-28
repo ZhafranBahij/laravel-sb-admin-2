@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\User;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -45,6 +46,11 @@ class UserCreate extends Component
     #[Layout('layouts.admin-livewire')]
     public function render()
     {
+
+        if (! Auth::user()->can('edit articles')) {
+            return $this->redirect('/user', true);
+        }
+
         $this->roles = Role::all()->pluck('name');
 
         return view('livewire.admin.user.user-create');

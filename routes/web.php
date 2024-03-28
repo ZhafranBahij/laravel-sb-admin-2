@@ -43,22 +43,22 @@ Route::middleware('auth')->group(function(){
     // Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     // Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
-    Route::prefix('user')->group(function(){
+    Route::middleware(['permission:view users'])->prefix('user')->group(function(){
         Route::get('', UserIndex::class)->name('user.index');
-        Route::get('/create', UserCreate::class)->name('user.create');
-        Route::get('/{user}/edit', UserEdit::class)->name('user.edit');
+        Route::get('/create', UserCreate::class)->middleware('can:create users')->name('user.create');
+        Route::get('/{user}/edit', UserEdit::class)->middleware('can:edit users')->name('user.edit');
     });
 
-    Route::prefix('role')->group(function(){
+    Route::middleware(['permission:view roles'])->prefix('role')->group(function(){
         Route::get('', RoleIndex::class)->name('role.index');
-        Route::get('/create', RoleCreate::class)->name('role.create');
-        Route::get('/{role}/edit', RoleEdit::class)->name('role.edit');
+        Route::get('/create', RoleCreate::class)->middleware('can:create roles')->name('role.create');
+        Route::get('/{role}/edit', RoleEdit::class)->middleware('can:edit roles')->name('role.edit');
     });
 
-    Route::prefix('permission')->group(function(){
+    Route::middleware(['permission:view permissions'])->prefix('permission')->group(function(){
         Route::get('', PermissionIndex::class)->name('permission.index');
-        Route::get('/create', PermissionCreate::class)->name('permission.create');
-        Route::get('/{permission}/edit', PermissionEdit::class)->name('permission.edit');
+        Route::get('/create', PermissionCreate::class)->middleware('can:create permissions')->name('permission.create');
+        Route::get('/{permission}/edit', PermissionEdit::class)->middleware('can:edit roles')->name('permission.edit');
     });
 
 });

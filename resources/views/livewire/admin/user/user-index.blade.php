@@ -21,9 +21,11 @@
 
                     <div class="pl-lg-4 mb-4">
                         <div class="row">
-                            <div class="col-6">
-                                <a href="{{ route('user.create') }}" class="btn btn-primary" wire:navigate.hover>Create +</a>
-                            </div>
+                            @can('create users')
+                                <div class="col-6">
+                                    <a href="{{ route('user.create') }}" class="btn btn-primary" wire:navigate.hover>Create +</a>
+                                </div>
+                            @endcan
                             <div class="col-6">
                                 <!-- Topbar Search -->
                                 <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -58,15 +60,19 @@
                                 <tr>
                                     <th scope="row">{{ $item->id }}</th>
                                     <td>
-                                        <a href="{{ route('user.edit', $item->id) }}" class="btn btn-warning btn-sm">
-                                            <i class="fa-solid fa-pencil"></i> Edit
-                                        </a>
-                                        <button type="button"
-                                        wire:click="delete({{ $item->id }})"
-                                        wire:confirm="Are you sure you want to delete this post?"
-                                        class="btn btn-danger btn-sm">
-                                            <i class="fa-solid fa-trash"></i> Delete
-                                        </button>
+                                        @can('edit users')
+                                            <a href="{{ route('user.edit', $item->id) }}" class="btn btn-warning btn-sm" wire:navigate.hover>
+                                                <i class="fa-solid fa-pencil"></i> Edit
+                                            </a>
+                                        @endcan
+                                        @can('delete users')
+                                            <button type="button"
+                                            wire:click="delete({{ $item->id }})"
+                                            wire:confirm="Are you sure you want to delete this post?"
+                                            class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Delete
+                                            </button>
+                                        @endcan
                                     </td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->last_name }}</td>
