@@ -1,30 +1,16 @@
-# Laravel SB Admin 2
+# Laravel SB Admin 2 with Livewire
 
-SB Admin 2 for Laravel.
+It's Laravel SB Admin 2 with Livewire. However, it's just an admi
 
-| Laravel Version | Branch | Support     |
-|-----------------|--------|-------------|
-| 11.0            | main   |             |
-| 10.0            | v10.0  |             |
-| 9.0             | v9.0   | End of life |
-| 8.0             | v8.0   | End of life |
+## Feature
 
-## Requirements
-
-- PHP >= 8.2
-- Ctype PHP Extension
-- cURL PHP Extension
-- DOM PHP Extension
-- Fileinfo PHP Extension
-- Filter PHP Extension
-- Hash PHP Extension
-- Mbstring PHP Extension
-- OpenSSL PHP Extension
-- PCRE PHP Extension
-- PDO PHP Extension
-- Session PHP Extension
-- Tokenizer PHP Extension
-- XML PHP Extension
+- Login & Register
+- Edit Profile
+- About
+- User
+- Role
+- Permission
+- Clockwork
 
 ## Installation
 
@@ -47,6 +33,8 @@ Laravel SB Admin 2 uses some open-source third-party libraries/packages, many th
 - Laravel - Open source framework.
 - LaravelEasyNav - Making managing navigation in Laravel easy.
 - SB Admin 2 - Thanks to Start Bootstrap.
+- Laravel SB Admin 2 - Thanks for your template.
+- Spatie Role Permission - Managing Role & Permission more easier.
 
 ## Preview
 
@@ -64,13 +52,37 @@ Laravel SB Admin 2 uses some open-source third-party libraries/packages, many th
 
 `dashboard`
 
-<img src="https://imgur.com/CrmOfT5l.png">
+<img src="./public/img-readme/Screenshot (1479).png">
 
 ***
 
 `profile`
 
-<img src="https://imgur.com/5t4eS1rl.png">
+<img src="./public/img-readme/Screenshot (1480).png">
+
+***
+
+`about`
+****
+<img src="./public/img-readme/Screenshot (1481).png">
+
+***
+
+`user`
+
+<img src="./public/img-readme/Screenshot (1481).png">
+
+***
+
+`role`
+
+<img src="./public/img-readme/Screenshot (1482).png">
+
+***
+
+`permission`
+
+<img src="./public/img-readme/Screenshot (1483).png">
 
 ***
 
