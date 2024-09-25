@@ -17,7 +17,6 @@ class UserSeeder extends Seeder
 
         $kirakira = User::create([
             'name' => 'kirakira4141',
-            'last_name' => 'kira',
             'password' => 'kirakira4141',
             'email' => 'kirakira4141@gmail.com',
         ]);
@@ -25,7 +24,6 @@ class UserSeeder extends Seeder
 
         $admin = User::create([
             'name' => 'admin',
-            'last_name' => 'admin',
             'password' => 'admin1234',
             'email' => 'admin@gmail.com',
         ]);
@@ -33,7 +31,6 @@ class UserSeeder extends Seeder
 
         $user = User::create([
             'name' => 'user',
-            'last_name' => 'user',
             'password' => 'user1234',
             'email' => 'user@gmail.com',
         ]);

@@ -14,19 +14,10 @@
                     <form wire:submit="save">
                         <div class="row">
                             <div class="mb-3 col-6">
-                                <label for="name" class="form-label">Name</label>
+                                <label for="name" class="form-label">Name</label> <span class="text-danger">*</span>
                                 <input type="text" class="form-control" wire:model.blur="name" id="name" aria-describedby="name">
                                 <div>
                                     @error('name')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                              </div>
-                              <div class="mb-3 col-6">
-                                <label for="last_name" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="last_name" wire:model.blur="last_name" aria-describedby="last_name">
-                                <div>
-                                    @error('last_name')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

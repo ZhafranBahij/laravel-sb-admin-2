@@ -14,7 +14,7 @@
                     <form wire:submit="save">
                         <div class="row">
                             <div class="mb-3 col-6">
-                                <label for="name" class="form-label">Name</label>
+                                <label for="name" class="form-label">Name</label> <span class="text-danger">*</span>
                                 <input type="text" class="form-control" wire:model.blur="name" id="name" aria-describedby="name">
                                 <div>
                                     @error('name')
@@ -22,17 +22,8 @@
                                     @enderror
                                 </div>
                               </div>
-                              <div class="mb-3 col-6">
-                                <label for="last_name" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="last_name" wire:model.blur="last_name" aria-describedby="last_name">
-                                <div>
-                                    @error('last_name')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                              </div>
                             <div class="mb-3 col-6">
-                              <label for="exampleInputEmail1" class="form-label">Email</label>
+                              <label for="exampleInputEmail1" class="form-label">Email</label> <span class="text-danger">*</span>
                               <input type="email" class="form-control" id="exampleInputEmail1" wire:model.blur="email" aria-describedby="emailHelp">
                               <div>
                                 @error('email')
@@ -41,7 +32,7 @@
                                 </div>
                             </div>
                             <div class="mb-3 col-6">
-                              <label for="exampleInputPassword1" class="form-label">Password</label>
+                              <label for="exampleInputPassword1" class="form-label">Password</label> <span class="text-danger">*</span>
                               <input type="password" class="form-control" id="exampleInputPassword1" wire:model.blur="password">
                               <div>
                                 @error('password')

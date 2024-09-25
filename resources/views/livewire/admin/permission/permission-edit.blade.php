@@ -14,7 +14,7 @@
                     <form wire:submit="save">
                         <div class="row">
                             <div class="mb-3 col-6">
-                                <label for="name" class="form-label">Permission Name</label>
+                                <label for="name" class="form-label">Permission Name</label> <span class="text-danger">*</span>
                                 <input type="text" class="form-control" wire:model.blur="name" id="name" aria-describedby="name">
                                 <div>
                                     @error('name')
