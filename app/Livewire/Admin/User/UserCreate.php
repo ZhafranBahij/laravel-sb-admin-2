@@ -23,7 +23,7 @@ class UserCreate extends Component
         return [
             'name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . auth()->user()->id,
+            'email' => 'required|string|email|max:255|unique:users.email,' . auth()->user()->id,
             'password' => 'required',
         ];
     }

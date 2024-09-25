@@ -36,7 +36,7 @@ class PermissionEdit extends Component
             $this->all()
         );
 
-        session()->flash('success', 'Data successfully updated.');
+        session(['success' => 'Data successfully updated.']);
 
         return $this->redirect('/permission', true);
     }

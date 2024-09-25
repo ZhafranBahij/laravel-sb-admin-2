@@ -28,7 +28,7 @@ class PermissionCreate extends Component
             $this->all()
         );
 
-        session()->flash('success', 'Data successfully created.');
+        session(['success' => 'Data successfully created.']);
 
         return $this->redirect('/permission', true);
     }
