@@ -18,6 +18,21 @@ class PermissionIndex extends Component
 
     public $search;
 
+    public function flash_message()
+    {
+        if (session('success') ?? null) {
+            $this->alert(
+                'success',
+                session('success'),
+                [
+                    'toast' => false,
+                    'position' => 'center',
+                ],
+            );
+            session(['success' => null]);
+        }
+    }
+
     public function updated($search)
     {
         $this->resetPage();
@@ -36,22 +51,13 @@ class PermissionIndex extends Component
     public function render()
     {
 
-        if (session('success') ?? null) {
-            $this->alert(
-                'success',
-                session('success'),
-                [
-                    'toast' => false,
-                    'position' => 'center',
-                ],
-            );
-            session(['success' => null]);
-        }
+        $this->flash_message();
 
         $permissions = Permission::query()
         ->whereAny([
             'name',
         ], 'LIKE', '%'.$this->search.'%')
+        ->latest()
         ->paginate(10);
 
         return view('livewire.admin.permission.permission-index', ['permissions' => $permissions]);

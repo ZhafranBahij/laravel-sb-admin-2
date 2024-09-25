@@ -38,7 +38,7 @@ class UserCreate extends Component
         );
 
         $user->assignRole($this->user_has_roles);
-        session()->flash('success', 'Data successfully created.');
+        session(['success' => 'Data successfully created.']);
 
         return $this->redirect('/user', true);
     }

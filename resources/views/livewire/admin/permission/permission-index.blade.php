@@ -34,7 +34,7 @@
                     <table class="table table-hover table-striped">
                         <thead>
                           <tr>
-                            <th scope="col">Id</th>
+                            <th scope="col">No</th>
                             <th scope="col">Action</th>
                             <th scope="col">Name</th>
                           </tr>
@@ -42,7 +42,7 @@
                         <tbody>
                             @foreach ($permissions as $key => $item)
                                 <tr>
-                                    <th scope="row">{{ $item->id }}</th>
+                                    <th scope="row">{{ ( $loop->index + 1 ) + ( ( $permissions->currentPage() - 1 ) * 10 )}}</th>
                                     <td>
                                         <a href="{{ route('permission.edit', $item->id) }}" class="btn btn-warning btn-sm"  wire:navigate.hover>
                                             <i class="fa-solid fa-pencil"></i>

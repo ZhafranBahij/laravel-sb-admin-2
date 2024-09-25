@@ -45,7 +45,7 @@ class UserEdit extends Component
 
         $user->syncRoles($this->user_has_roles);
 
-        session()->flash('success', 'Data successfully updated.');
+        session(['success' => 'Data successfully updated.']);
 
         return $this->redirect('/user', true);
     }

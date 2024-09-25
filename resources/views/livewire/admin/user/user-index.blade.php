@@ -45,24 +45,22 @@
                     <table class="table table-hover table-striped">
                         <thead>
                           <tr>
-                            <th scope="col">Id</th>
+                            <th scope="col">No</th>
                             <th scope="col">Action</th>
                             <th scope="col">First</th>
                             <th scope="col">Last</th>
                             <th scope="col">Roles</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Created At</th>
-                            <th scope="col">Updated At</th>
                           </tr>
                         </thead>
                         <tbody>
                             @foreach ($users as $key => $item)
                                 <tr>
-                                    <th scope="row">{{ $item->id }}</th>
+                                    <th scope="row">{{ ( $loop->index + 1 ) + ( ( $users->currentPage() - 1 ) * 10 )}}</th>
                                     <td>
                                         @can('edit users')
                                             <a href="{{ route('user.edit', $item->id) }}" class="btn btn-warning btn-sm" wire:navigate.hover>
-                                                <i class="fa-solid fa-pencil"></i> Edit
+                                                <i class="fa-solid fa-pencil"></i>
                                             </a>
                                         @endcan
                                         @can('delete users')
@@ -70,7 +68,7 @@
                                             wire:click="delete({{ $item->id }})"
                                             wire:confirm="Are you sure you want to delete this post?"
                                             class="btn btn-danger btn-sm">
-                                                <i class="fa-solid fa-trash"></i> Delete
+                                                <i class="fa-solid fa-trash"></i>
                                             </button>
                                         @endcan
                                     </td>
@@ -86,8 +84,6 @@
                                         </ul>
                                     </td>
                                     <td>{{ $item->email }}</td>
-                                    <td>{{ $item->created_at }}</td>
-                                    <td>{{ $item->updated_at }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
