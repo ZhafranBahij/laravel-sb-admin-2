@@ -40,7 +40,7 @@ class RoleEdit extends Component
         );
         $role->syncPermissions($this->permissions_in_rule);
 
-        session()->flash('success', 'Data successfully updated.');
+        session(['success' => 'Data successfully updated.']);
 
         return $this->redirect('/role', true);
     }

@@ -2,15 +2,6 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">{{ __('Roles') }}</h1>
 
-    @if (session('success'))
-        <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-
     <div class="row justify-content-center">
 
         <div class="col-lg-10">
@@ -43,27 +34,25 @@
                     <table class="table table-hover table-striped">
                         <thead>
                           <tr>
-                            <th scope="col">Id</th>
+                            <th scope="col">No</th>
                             <th scope="col">Action</th>
                             <th scope="col">Name</th>
                             <th scope="col">Permission</th>
-                            <th scope="col">Created At</th>
-                            <th scope="col">Updated At</th>
                           </tr>
                         </thead>
                         <tbody>
                             @foreach ($roles as $key => $item)
                                 <tr>
-                                    <th scope="row">{{ $item->id }}</th>
+                                    <th scope="row">{{ ( $loop->index + 1 ) + ( ( $roles->currentPage() - 1 ) * 10 )}}</th>
                                     <td>
                                         <a href="{{ route('role.edit', $item->id) }}" class="btn btn-warning btn-sm"  wire:navigate.hover>
-                                            <i class="fa-solid fa-pencil"></i> Edit
+                                            <i class="fa-solid fa-pencil"></i>
                                         </a>
                                         <button type="button"
                                         wire:click="delete({{ $item->id }})"
                                         wire:confirm="Are you sure you want to delete this post?"
                                         class="btn btn-danger btn-sm">
-                                        <i class="fa-solid fa-trash"></i> Delete
+                                        <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </td>
                                     <td>{{ $item->name }}</td>
@@ -76,8 +65,6 @@
                                             @endforeach
                                         </ul>
                                     </td>
-                                    <td>{{ $item->created_at }}</td>
-                                    <td>{{ $item->updated_at }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

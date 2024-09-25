@@ -9,19 +9,22 @@
             <div class="card shadow mb-4">
 
                 <div class="card-body">
+                    <a href="{{ route('role.index') }}" class="btn btn-secondary mb-5" wire:navigate.hover><i class="fa-solid fa-arrow-left"></i></a>
 
-                    <form class="row" wire:submit="save">
-                        <div class="mb-3 col-6">
-                            <label for="name" class="form-label">Role Name</label>
-                            <input type="text" class="form-control" wire:model.blur="name" id="name" aria-describedby="name">
-                            <div>
-                                @error('name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                    <form wire:submit="save">
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="name" class="form-label">Role Name</label>
+                                <input type="text" class="form-control" wire:model.blur="name" id="name" aria-describedby="name">
+                                <div>
+                                    @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
-                        <div class="mb-3 col-6">
-                        </div>
+                        <hr>
+                        <h3>Permissions</h3>
                         <div class="mb-3 pl-3 row">
                             @foreach ($permissions as $key => $item)
                                 <div class="form-check col-3">
@@ -32,8 +35,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="mb-3 col-12">
-                        </div>
+                        <hr>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
 

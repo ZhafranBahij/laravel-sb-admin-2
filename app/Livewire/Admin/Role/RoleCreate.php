@@ -35,7 +35,7 @@ class RoleCreate extends Component
 
         $role->syncPermissions($this->permissions_in_rule);
 
-        session()->flash('success', 'Data successfully created.');
+        session(['success' => 'Data successfully created.']);
 
         return $this->redirect('/role', true);
     }
